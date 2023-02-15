@@ -31,9 +31,10 @@
   },
   "browserslist": {
     "production": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+      ">2%",
+      "Edge > 14",
+      "Firefox > 63",
+      "Chrome > 67"
     ],
     "development": [
       "last 1 chrome version",
