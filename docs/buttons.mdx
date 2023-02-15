@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Button
@@ -11,14 +11,26 @@ import "@hybridui/button";
 import { ElButton } from "@hybridui/button/react";
 
 export const Highlight = ({ children, color }) => {
-  const alertF = () => alert("ok");
+  const alertF = () => alert("clicked");
   return (
     <>
       <ElButton>Primary Button</ElButton>
-      <ElButton countChanged={alertF} type={"danger"}>
+      <ElButton onClick={alertF} type={"danger"}>
         Danger Button
       </ElButton>
       <ElButton type="primary">Primary Button</ElButton>
+      <ElButton icon="bars" type="text">
+        Text Button
+      </ElButton>
+      <ElButton icon="user" type="link">
+        Link Button
+      </ElButton>
+      <ElButton icon="user" type="primary">
+        Link Button
+      </ElButton>
+      <ElButton icon="list" shape="circle" type="danger"></ElButton>
+      <ElButton icon="user" shape="circle"></ElButton>
+      <ElButton type="text">😅</ElButton>
     </>
   );
 };
