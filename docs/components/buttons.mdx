@@ -1,0 +1,332 @@
+---
+sidebar_position: 2
+---
+
+# Button
+
+import { createComponent } from "@lit-labs/react";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import "@hybridui/button";
+import { HyButton } from "@hybridui/button/react";
+
+export const ButtonTypeExample = ({ children, color }) => {
+  return (
+    <>
+      <HyButton type="primary">Primary Button</HyButton>
+      <HyButton>Primary Button</HyButton>
+      <HyButton type="dashed">Primary Button</HyButton>
+      <HyButton type="text">Primary Button</HyButton>
+      <HyButton type="link">Primary Button</HyButton>
+    </>
+  );
+};
+
+## When To Use
+
+Buttons in Hybrid Design are used to perform one or more operations. When clicked, a button triggers the corresponding business logic. In Hybrid Design, we offer five types of buttons:
+
+- Primary button: This button indicates the main action and there should only be one primary button in each section.
+- Default button: This button represents a series of actions without priority.
+- Dashed button: This button is commonly used for adding an action.
+- Text button: This button is used for the most secondary action.
+- Link button: This button is used for external links.
+
+Additionally, we have four other properties that can be applied to any type of button:
+
+- `danger`: This property is used for actions that involve risk, such as deletion or authorization.
+- `disabled`: This property indicates when actions are not available.
+- `loading`: This property adds a loading spinner to the button, preventing multiple submits.
+
+In HybridUI, the available button types are primary, default, dashed, text, and link.
+
+## How to use it
+
+<Tabs>
+  <TabItem value="npm" label="npm">
+
+```shell
+npm install @hybridui/button
+```
+
+</TabItem>
+ <TabItem value="uarn" label="yarn">
+
+```shell
+yarn add @hybridui/button
+```
+
+</TabItem>
+</Tabs>
+
+### Examples
+
+#### Button type
+
+Hybrid-UI includes several types of buttons, such as primary, default, dashed,
+text, and link buttons.
+
+<ButtonTypeExample> </ButtonTypeExample>
+<br />
+<br />
+<details>
+  <summary>Show code</summary>
+<Tabs>
+  <TabItem value="react" label="React">
+
+```jsx
+import { HyButton } from "@hybridui/button/react";
+
+export default function App() {
+  return (
+    <div className="App">
+      <HyButton type="primary">Primary Button</HyButton>
+      <HyButton>Primary Button</HyButton>
+      <HyButton type="dashed">Primary Button</HyButton>
+      <HyButton type="text">Primary Button</HyButton>
+      <HyButton type="link">Primary Button</HyButton>
+    </div>
+  );
+}
+```
+
+</TabItem>
+<TabItem value="Html/Angular" label="Html/Angular">
+
+```jsx
+<hy-button type="primary">Primary Button</hy-button>
+<hy-button>Primary Button</hy-button>
+<hy-button type="dashed">Primary Button</hy-button>
+<hy-button type="text">Primary Button</hy-button>
+<hy-button type="link">Primary Button</HyButton>
+```
+
+</TabItem>
+
+</Tabs>
+
+</details>
+<a
+  href="https://codesandbox.io/s/hybridui-button-example-one-gve3ho?file=/src/App.js"
+  target="_blank"
+>
+  Codesandbox (React example) <i class="fa fa-external-link-alt"></i>
+</a>
+
+#### Button Icon
+
+export const ButtonIconExample = ({ children, color }) => {
+  return (
+    <>
+      <HyButton icon="search" type="primary"></HyButton>
+      <HyButton icon="search" shape="circle" type="primary"></HyButton>
+      <HyButton shape="circle" type="primary">
+        B
+      </HyButton>
+      <HyButton icon="search" type="primary">
+        Search
+      </HyButton>
+      <HyButton icon="search" shape="circle"></HyButton>
+      <HyButton icon="search">Search</HyButton>
+      <HyButton icon="search" shape="circle" type="dashed"></HyButton>
+      <HyButton icon="search" type="dashed">
+        Search
+      </HyButton>
+    </>
+  );
+};
+
+To include an Icon in a Button component, you can either set the icon property or add an Icon component inside the Button.
+However, if you want more precise control over the positioning and arrangement of the Icon, it's best to add the Icon component inside the Button rather than relying on the icon property.
+
+<ButtonIconExample></ButtonIconExample>
+<br />
+<br />
+
+<details>
+  <summary>Show code</summary>
+<Tabs>
+  <TabItem value="react" label="React">
+
+<!-- prettier-ignore-start -->
+
+
+```jsx
+import { HyButton } from "@hybridui/button/react";
+
+export default function App() {
+  return (
+    <div className="App">
+      <HyButton icon="search" type="primary"></HyButton>
+      <HyButton icon="search" shape="circle" type="primary"></HyButton>
+      <HyButton shape="circle" type="primary">
+        B
+      </HyButton>
+      <HyButton icon="search" type="primary"> Search </HyButton>
+      <HyButton icon="search" shape="circle"></HyButton>
+      <HyButton icon="search">Search</HyButton>
+      <HyButton icon="search" shape="circle" type="dashed"></HyButton>
+      <HyButton icon="search" type="dashed"> Search </HyButton>
+    </div>
+  );
+}
+```
+
+<!-- prettier-ignore-end -->
+
+</TabItem>
+<TabItem value="Html/Angular" label="Html/Angular">
+
+<!-- prettier-ignore-start -->
+```jsx
+<hy-button icon="search" type="primary"></hy-button>
+<hy-button icon="search" shape="circle" type="primary"></hy-button>
+<hy-button shape="circle" type="primary">B</hy-button>
+<hy-button icon="search" type="primary"> Search </hy-button>
+<hy-button icon="search" shape="circle"></hy-button>
+<hy-button icon="search">Search</hy-button>
+<hy-button icon="search" shape="circle" type="dashed"></hy-button>
+<hy-button icon="search" type="dashed"> Search </hy-button>
+
+```
+
+<!-- prettier-ignore-end -->
+
+</TabItem>
+
+</Tabs>
+</details>
+
+<a
+  href="https://codesandbox.io/s/hybridui-button-icon-example-forked-nrqi20"
+  target="_blank"
+>
+  Codesandbox (React example) <i class="fa fa-external-link-alt"></i>
+</a>
+<br />
+
+#### Button size
+
+HybridUI provides support for three button sizes: default, large, and small. To specify a desired size, set the size property to either "large" or "small".
+For a button with the default size, you can omit the size property.
+
+export const ButtonSizeExample = ({ children, color }) => {
+  return (
+    <>
+      <HyButton size="small">Small Size Button</HyButton>
+      <HyButton> Default Size Button</HyButton>
+      <HyButton size="large">Large Size Button</HyButton>
+      <br />
+      <HyButton type="primary" size="small">
+        Small Size Button
+      </HyButton>
+      <HyButton type="primary"> Default Size Button</HyButton>
+      <HyButton type="primary" size="large">
+        Large Size Button
+      </HyButton>
+      <br />
+      <HyButton type="link" size="large">
+        Link Size Button
+      </HyButton>
+      <HyButton icon="user" type="dashed" size="large">
+        Icon big Size with text Button
+      </HyButton>
+      <HyButton icon="search" type="dashed" size="large"></HyButton>
+      <HyButton icon="search" type="dashed" size="small"></HyButton>
+    </>
+  );
+};
+
+<ButtonSizeExample></ButtonSizeExample>
+
+<details>
+  <summary>Show code</summary>
+<Tabs>
+  <TabItem value="react" label="React">
+
+<!-- prettier-ignore-start -->
+
+
+```jsx
+import { HyButton } from "@hybridui/button/react";
+
+export default function App() {
+  return (
+    <div className="App">
+      <HyButton size="small">Small Size Button</HyButton>
+      <HyButton> Default Size Button</HyButton>
+      <HyButton size="large">Large Size Button</HyButton>
+      <br />
+      <HyButton type="primary" size="small"> Small Size Button </HyButton>
+      <HyButton type="primary"> Default Size Button</HyButton>
+      <HyButton type="primary" size="large"> Large Size Button </HyButton>
+      <br />
+      <HyButton type="link" size="large"> Link Size Button </HyButton>
+      <HyButton icon="user" type="dashed" size="large"> Icon big Size with text Button </HyButton>
+      <HyButton icon="search" type="dashed" size="large"></HyButton>
+      <HyButton icon="search" type="dashed" size="small"></HyButton>
+    </div>
+  );
+}
+
+```
+
+<!-- prettier-ignore-end -->
+
+</TabItem>
+<TabItem value="Html/Angular" label="Html/Angular">
+
+<!-- prettier-ignore-start -->
+```jsx
+<hy-button size="small">Small Size Button</hy-button>
+<hy-button> Default Size Button</hy-button>
+<hy-button size="large">Large Size Button</hy-button>
+<br />
+<hy-button type="primary" size="small"> Small Size Button </hy-button>
+<hy-button type="primary"> Default Size Button</hy-button>
+<hy-button type="primary" size="large"> Large Size Button </hy-button>
+<br />
+<hy-button type="link" size="large"> Link Size Button </hy-button>
+<hy-button icon="user" type="dashed" size="large"> Icon big Size with text Button </hy-button>
+<hy-button icon="search" type="dashed" size="large"></hy-button>
+<hy-button icon="search" type="dashed" size="small"></hy-button>
+
+```
+
+<!-- prettier-ignore-end -->
+
+</TabItem>
+
+</Tabs>
+</details>
+<a
+  href="https://codesandbox.io/s/hybridui-button-size-dwwc0w?file=/src/App.js"
+  target="_blank"
+>
+  Codesandbox (React example) <i class="fa fa-external-link-alt"></i>
+</a>
+<br />
+
+## API
+
+The Button component can be customized to create different button styles by setting various properties.
+It is recommended to set the properties in the following order: `type` -> `shape` -> `size` -> `loading` -> `disabled`.
+
+| Property | Description                                                                                                                                                        | Type                             | Default   | Version |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------- | --------- | ------- |
+| block    | Option to fit button width to its parent width                                                                                                                     | boolean                          | false     |         |
+| danger   | Sets the danger status of the button                                                                                                                               | boolean                          | false     |         |
+| disabled | Sets the disabled state of the button                                                                                                                              | boolean                          | false     |         |
+| href     | Sets the redirect URL for a link button                                                                                                                            | string                           | -         |         |
+| htmlType | Sets the original HTML `type` attribute of the button. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) for more information. | string                           | `button`  |         |
+| icon     | Sets the icon component for the button                                                                                                                             | ReactNode                        | -         |         |
+| loading  | Sets the loading state of the button                                                                                                                               | boolean \| { delay: number }     | false     |         |
+| shape    | Sets the shape of the button                                                                                                                                       | `default` \| `circle` \| `round` | `default` |         |
+| size     | Sets the size of the button                                                                                                                                        | `large` \| `middle` \| `small`   | `middle`  |         |
+| target   | Sets the `target` attribute of a link button. Works only when `href` is specified.                                                                                 | string                           | -         |         |
+| type     | Sets the type of button. Available options are `primary`, `ghost`, `dashed`, `link`, `text`, `default`                                                             |
+| onClick  | Set the handler to handle `click` event                                                                                                                            | (event: MouseEvent) => void      | -         |         |
+
+```
+
+```
