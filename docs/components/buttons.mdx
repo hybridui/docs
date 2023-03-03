@@ -9,6 +9,7 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import "@hybridui/button";
 import { HyButton } from "@hybridui/button/react";
+import { useState } from "react";
 
 export const ButtonTypeExample = ({ children, color }) => {
   return (
@@ -59,9 +60,9 @@ yarn add @hybridui/button
 </TabItem>
 </Tabs>
 
-### Examples
+## Examples
 
-#### Button type
+### Type
 
 Hybrid-UI includes several types of buttons, such as primary, default, dashed,
 text, and link buttons.
@@ -113,7 +114,7 @@ export default function App() {
   Codesandbox (React example) <i class="fa fa-external-link-alt"></i>
 </a>
 
-#### Button Icon
+### Icon
 
 export const ButtonIconExample = ({ children, color }) => {
   return (
@@ -205,7 +206,7 @@ export default function App() {
 </a>
 <br />
 
-#### Button size
+### Size
 
 HybridUI provides support for three button sizes: default, large, and small. To specify a desired size, set the size property to either "large" or "small".
 For a button with the default size, you can omit the size property.
@@ -306,6 +307,104 @@ export default function App() {
   Codesandbox (React example) <i class="fa fa-external-link-alt"></i>
 </a>
 <br />
+
+### Loading
+
+To add a loading indicator to a button, you can set the loading property on the Button.
+
+export const ButtonLoadingExample = ({ children, color }) => {
+  const [loading, setLoading] = useState(false);
+  const toggleLoading = () => {
+    setLoading(!loading);
+  };
+  return (
+    <>
+      <HyButton loading icon="spinner">
+        <span>loading</span>
+      </HyButton>
+      <HyButton type="primary" loading size="large" icon="spinner">
+        <span>loading</span>
+      </HyButton>
+      <HyButton
+        type="primary"
+        onClick={toggleLoading}
+        loading={loading}
+        icon={!loading || "spinner"}
+      >
+        {loading ? <span>loading</span> : <span>Click Me</span>}
+      </HyButton>
+    </>
+  );
+};
+
+<ButtonLoadingExample></ButtonLoadingExample>
+<br/>
+<details>
+  <summary>Show code</summary>
+<Tabs>
+  <TabItem value="react" label="React">
+
+```jsx
+import { HyButton } from "@hybridui/button/react";
+import { useState } from "react";
+
+export default function App() {
+  const [loading, setLoading] = useState(false);
+  const toggleLoading = () => {
+    setLoading(!loading);
+  };
+  return (
+    <>
+      <HyButton loading icon="spinner">
+        <span>loading</span>
+      </HyButton>
+      <HyButton type="primary" loading size="large" icon="spinner">
+        <span>loading</span>
+      </HyButton>
+      <HyButton
+        type="primary"
+        onClick={toggleLoading}
+        loading={loading}
+        icon={!loading || "spinner"}
+      >
+        {loading ? <span>loading</span> : <span>Click Me</span>}
+      </HyButton>
+    </>
+  );
+}
+```
+
+</TabItem>
+<TabItem value="Html/Angular" label="Html/Angular">
+
+```jsx
+<HyButton loading icon="spinner">
+        <span>loading</span>
+      </HyButton>
+      <HyButton type="primary" loading size="large" icon="spinner">
+        <span>loading</span>
+      </HyButton>
+      <HyButton
+        type="primary"
+        onClick={toggleLoading}
+        loading={loading}
+        icon={!loading || "spinner"}
+      >
+        {loading ? <span>loading</span> : <span>Click Me</span>}
+      </HyButton>
+```
+
+</TabItem>
+
+</Tabs>
+
+</details>
+<a
+  href="https://codesandbox.io/s/hybridui-button-example-one-gve3ho?file=/src/App.js"
+  target="_blank"
+>
+  Codesandbox (React example) <i class="fa fa-external-link-alt"></i>
+</a>
 
 ## API
 
