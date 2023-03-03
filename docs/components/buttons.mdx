@@ -239,6 +239,8 @@ export const ButtonSizeExample = ({ children, color }) => {
 };
 
 <ButtonSizeExample></ButtonSizeExample>
+<br />
+<br />
 
 <details>
   <summary>Show code</summary>
@@ -338,7 +340,9 @@ export const ButtonLoadingExample = ({ children, color }) => {
 };
 
 <ButtonLoadingExample></ButtonLoadingExample>
-<br/>
+<br />
+<br />
+
 <details>
   <summary>Show code</summary>
 <Tabs>
@@ -378,9 +382,55 @@ export default function App() {
 <TabItem value="Html/Angular" label="Html/Angular">
 
 ```jsx
-<HyButton loading icon="spinner">
-        <span>loading</span>
+<hy-button loading icon="spinner"> <span>loading</span> </hy-button>
+<hy-button type="primary" loading size="large" icon="spinner"> <span>loading</span> </hy-button>
+<hy-button type="primary" loading icon="spinner"><span>loading</span> </hy-button>
+```
+
+</TabItem>
+
+</Tabs>
+
+</details>
+<a
+  href="https://codesandbox.io/s/hybridui-button-loading-e71gy1?file=/src/App.js:0-690"
+  target="_blank"
+>
+  Codesandbox (React example) <i class="fa fa-external-link-alt"></i>
+</a>
+
+### Disabled
+
+To disable a button, you can add the "disabled" property to the Button element.
+
+export const ButtonDisabledExample = ({ children, color }) => {
+  const [loading, setLoading] = useState(false);
+  const toggleLoading = () => {
+    setLoading(!loading);
+  };
+  return (
+    <>
+      <HyButton>
+        <span>Primary</span>
       </HyButton>
+      <HyButton disabled>
+        <span>Primary disabled</span>
+      </HyButton>
+      <br />
+      <HyButton type="dashed">
+        <span>dashed</span>
+      </HyButton>
+      <HyButton disabled type="dashed">
+        <span>dashed disabled</span>
+      </HyButton>
+      <br />
+      <HyButton type="link">
+        <span>Link</span>
+      </HyButton>
+      <HyButton disabled type="link">
+        <span>Link disabled</span>
+      </HyButton>
+      <br />
       <HyButton type="primary" loading size="large" icon="spinner">
         <span>loading</span>
       </HyButton>
@@ -392,19 +442,11 @@ export default function App() {
       >
         {loading ? <span>loading</span> : <span>Click Me</span>}
       </HyButton>
-```
+    </>
+  );
+};
 
-</TabItem>
-
-</Tabs>
-
-</details>
-<a
-  href="https://codesandbox.io/s/hybridui-button-example-one-gve3ho?file=/src/App.js"
-  target="_blank"
->
-  Codesandbox (React example) <i class="fa fa-external-link-alt"></i>
-</a>
+<ButtonDisabledExample></ButtonDisabledExample>
 
 ## API
 
