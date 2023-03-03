@@ -431,16 +431,32 @@ export const ButtonDisabledExample = ({ children, color }) => {
         <span>Link disabled</span>
       </HyButton>
       <br />
-      <HyButton type="primary" loading size="large" icon="spinner">
-        <span>loading</span>
+      <HyButton type="text">
+        <span>text</span>
       </HyButton>
-      <HyButton
-        type="primary"
-        onClick={toggleLoading}
-        loading={loading}
-        icon={!loading || "spinner"}
-      >
-        {loading ? <span>loading</span> : <span>Click Me</span>}
+      <HyButton disabled type="text">
+        <span>text disabled</span>
+      </HyButton>
+      <br />
+      <HyButton type="link" danger>
+        <span>link</span>
+      </HyButton>
+      <HyButton disabled type="link" danger>
+        <span>link disabled</span>
+      </HyButton>
+      <br />
+      <HyButton type="dashed" danger>
+        <span>dashed</span>
+      </HyButton>
+      <HyButton disabled type="dashed" danger>
+        <span>dashed disabled</span>
+      </HyButton>
+      <br />
+      <HyButton type="primary" danger>
+        <span>primary</span>
+      </HyButton>
+      <HyButton disabled type="primary" danger>
+        <span>primary disabled</span>
       </HyButton>
     </>
   );
