@@ -10,6 +10,7 @@ import TabItem from "@theme/TabItem";
 import "@hybridui/button";
 import { HyButton } from "@hybridui/button/react";
 import { useState } from "react";
+import { BlockPicker } from "react-color";
 
 export const ButtonTypeExample = ({ children, color }) => {
   return (
@@ -19,6 +20,110 @@ export const ButtonTypeExample = ({ children, color }) => {
       <HyButton type="dashed">Primary Button</HyButton>
       <HyButton type="text">Primary Button</HyButton>
       <HyButton type="link">Primary Button</HyButton>
+    </>
+  );
+};
+
+export const DefaultColor = ({ color }) => {
+  return (
+    <>
+      <div
+        style={{
+          display: "inline-block",
+          verticalAlign: "super",
+          marginRight: "5px",
+        }}
+      >
+        {color}
+      </div>
+      <div
+        style={{
+          height: "35px",
+          width: "75px",
+          backgroundColor: color,
+          margin: "-1 auto ",
+          display: "inline-block",
+        }}
+      ></div>
+    </>
+  );
+};
+
+export const ColorPicket = ({ children, color, cssVariableName }) => {
+  const [updateColor, setUpdateColor] = useState(color);
+  const [displayPicker, setdisplayPicker] = useState(false);
+  const handleChangeComplete = (_color) => {
+    setUpdateColor(_color.hex);
+    document.documentElement.style.setProperty(cssVariableName, _color.hex);
+  };
+  const toogleDisplayPicker = () => {
+    setdisplayPicker(!displayPicker);
+  };
+  return (
+    <>
+      <div
+        style={{
+          height: "35px",
+          width: "35px",
+          backgroundColor: updateColor,
+          cursor: "pointer ",
+          margin: "0 auto 20px",
+        }}
+        onClick={toogleDisplayPicker}
+      ></div>
+      {displayPicker && (
+        <BlockPicker
+          color={updateColor}
+          onChangeComplete={handleChangeComplete}
+        />
+      )}
+    </>
+  );
+};
+
+export const InputPicket = ({ children, value, cssVariableName, unit }) => {
+  const [updateValue, setUpdateValue] = useState(value);
+  const [displayPicker, setdisplayPicker] = useState(false);
+  const handleChangeComplete = (e) => {
+    setUpdateValue(e.target.value);
+    document.documentElement.style.setProperty(
+      cssVariableName,
+      `${e.target.value}${unit}`
+    );
+  };
+  const toogleDisplayPicker = () => {
+    setdisplayPicker(!displayPicker);
+  };
+  return (
+    <>
+      <input
+        type="number"
+        style={{ width: "60px", display: "inline-block" }}
+        onChange={handleChangeComplete}
+        value={updateValue}
+      />
+      <div>{unit}</div>
+    </>
+  );
+};
+
+export const InputTextPicket = ({ children, value, cssVariableName }) => {
+  const [updateValue, setUpdateValue] = useState(value);
+  const [displayPicker, setdisplayPicker] = useState(false);
+  const handleChangeComplete = (e) => {
+    setUpdateValue(e.target.value);
+    document.documentElement.style.setProperty(cssVariableName, e.target.value);
+  };
+  const toogleDisplayPicker = () => {
+    setdisplayPicker(!displayPicker);
+  };
+  return (
+    <>
+      <input
+        style={{ width: "60px", display: "inline-block" }}
+        onChange={handleChangeComplete}
+        value={updateValue}
+      />
     </>
   );
 };
@@ -70,7 +175,7 @@ text, and link buttons.
 <ButtonTypeExample> </ButtonTypeExample>
 <br />
 <br />
-<details>
+<details style={{backgroundColor : 'transparent', border : 'none'}}>
   <summary>Show code</summary>
 <Tabs>
   <TabItem value="react" label="React">
@@ -107,6 +212,69 @@ export default function App() {
 </Tabs>
 
 </details>
+
+<details style={{backgroundColor : 'transparent', border : 'none'}}>
+  <summary>CSS Varibale</summary>
+  
+{/* prettier-ignore-start */}
+#### Default
+
+| Attribute                           | Value                           |
+| ----------------------------------- | ------------------------------- | -------------------------------------------------------------------------------------- |
+| --hybrid-button-background-color    | <DefaultColor color="#f9f9f9"/> | <ColorPicket color="#f9f9f9" cssVariableName="--hybrid-button-background-color"/>      |
+| --hybrid-button-border-color        | <DefaultColor color="#d0d0d0"/> | <ColorPicket color="#d0d0d0" cssVariableName="--hybrid-button-border-color"/>          |
+| --hybrid-button-text-color          | <DefaultColor color="#393939"/> | <ColorPicket color="#393939" cssVariableName="--hybrid-button-text-color"/>            |
+| --hybrid-button-hover-border-color  | <DefaultColor color="#1677ff"/> | <ColorPicket color="#1677ff" cssVariableName="--hybrid-button-hover-border-color"/>    |
+| --hybrid-button-hover-color         | <DefaultColor color="#1677ff"/> | <ColorPicket color="#1677ff" cssVariableName="--hybrid-button-hover-color"/>           |
+| --hybrid-button-active-border-color | <DefaultColor color="#1661b1"/> | <ColorPicket color="#1661b1" cssVariableName="--hybrid-button-active-border-color"/>   |
+| --hybrid-button-active--color       | <DefaultColor color="#184d86"/> | <ColorPicket color="#184d86" cssVariableName="--hybrid-button-active--color"/>         |
+| --hybrid-button-padding-y           | 0.5rem                          | <InputPicket value="0.5" unit="rem" cssVariableName="--hybrid-button-padding-y"/>      |
+| --hybrid-button-padding-x           | 0.5rem                          | <InputPicket value="0.5" unit="rem" cssVariableName="--hybrid-button-padding-x"/>      |
+| --hybrid-button-padding-r           | 0.8rem                          | <InputPicket value="0.8" unit="rem" cssVariableName="--hybrid-button-padding-r"/>      |
+| --hybrid-button-padding-l           | 0.8rem                          | <InputPicket value="0.8" unit="rem" cssVariableName="--hybrid-button-padding-l"/>      |
+| --hybrid-button-border-radius       | 0.25rem                         | <InputPicket value="0.25" unit="rem" cssVariableName="--hybrid-button-border-radius"/> |
+| --hybrid-button-border-width        | 1px                             | <InputPicket value="1" unit="px" cssVariableName="--hybrid-button-font-size"/>         |
+| --hybrid-button-font-size           | 0.8rem                          | <InputPicket value="0.8" unit="rem" cssVariableName="--hybrid-button-font-size"/>      |
+| --hybrid-button-font-weight         | 0.8rem                          | <InputTextPicket value="normal" cssVariableName="--hybrid-button-font-weight"/>        |
+| --hybrid-button-text-transform      | none                            | <InputTextPicket value="nonde" cssVariableName="--hybrid-button-text-transform"/>      |
+
+#### Primary
+
+| Attribute                                       | Value                           |
+| ----------------------------------------------- | ------------------------------- | ------------------------------------------------------------------------------------------------ |
+| --hybrid-button-primary-background-color        | <DefaultColor color="#1277e1"/> | <ColorPicket color="#1277e1" cssVariableName="--hybrid-button-primary-background-color"/>        |
+| --hybrid-button-primary-border-color            | <DefaultColor color="#1277e1"/> | <ColorPicket color="#1277e1" cssVariableName="--hybrid-button-primary-border-color"/>            |
+| --hybrid-button-primary-text-color              | <DefaultColor color="#ffffff"/> | <ColorPicket color="#ffffff" cssVariableName="--hybrid-button-primary-text-color"/>              |
+| --hybrid-button-primary-hover-background-color  | <DefaultColor color="#0a70ff"/> | <ColorPicket color="#0a70ff" cssVariableName="--hybrid-button-primary-hover-background-color"/>  |
+| --hybrid-button-primary-hover-border-color      | <DefaultColor color="#1677ff"/> | <ColorPicket color="#1677ff" cssVariableName="--hybrid-button-primary-hover-border-color"/>      |
+| --hybrid-button-primary-active-background-color | <DefaultColor color="#0559cf"/> | <ColorPicket color="#0559cf" cssVariableName="--hybrid-button-primary-active-background-color"/> |
+| --hybrid-button-primary-active-border-color     | <DefaultColor color="#1677ff"/> | <ColorPicket color="#1677ff" cssVariableName="--hybrid-button-primary-active-border-color"/>     |
+
+#### Dashed
+
+| Attribute                                  | Value                           |
+| ------------------------------------------ | ------------------------------- | ------------------------------------------------------------------------------------------- |
+| --hybrid-button-dashed-hover-border-color  | <DefaultColor color="#1277e1"/> | <ColorPicket color="#1277e1" cssVariableName="--hybrid-button-dashed-hover-border-color"/>  |
+| --hybrid-button-dashed-hover-text-color    | <DefaultColor color="#1277e1"/> | <ColorPicket color="#1277e1" cssVariableName="--hybrid-button-dashed-hover-text-color "/>   |
+| --hybrid-button-dashed-active-border-color | <DefaultColor color="#1677ff"/> | <ColorPicket color="#1677ff" cssVariableName="--hybrid-button-dashed-active-border-color"/> |
+
+#### Text
+
+| Attribute                                    | Value                           |
+| -------------------------------------------- | ------------------------------- | ---------------------------------------------------------------------------------------------- |
+| --hybrid-button-text-hover-background-color  | <DefaultColor color="#e1e1e1"/> | <ColorPicket color="#e1e1e1" cssVariableName="--hybrid-button-text-hover-background-color"/>   |
+| --hybrid-button-text-active-background-color | <DefaultColor color="#c1c1c1"/> | <ColorPicket color="#c1c1c1" cssVariableName="--hybrid-button-text-active-background-color "/> |
+
+#### Link
+
+| Attribute                              | Value                           |
+| -------------------------------------- | ------------------------------- | ---------------------------------------------------------------------------------------- |
+| --hybrid-button-link-text-color        | <DefaultColor color="#1677ff"/> | <ColorPicket color="#1677ff" cssVariableName="--hybrid-button-link-text-color"/>         |
+| --hybrid-button-link-hover-text-color  | <DefaultColor color="#4a96ff"/> | <ColorPicket color="#4a96ff" cssVariableName="--hybrid-button-link-hover-text-color "/>  |
+| --hybrid-button-link-active-text-color | <DefaultColor color="#0862df"/> | <ColorPicket color="#0862df" cssVariableName="--hybrid-button-link-active-text-color "/> |
+
+</details>
+{/* prettier-ignore-end */}
 <a
   href="https://codesandbox.io/s/hybridui-button-example-one-gve3ho?file=/src/App.js"
   target="_blank"
@@ -144,7 +312,7 @@ However, if you want more precise control over the positioning and arrangement o
 <br />
 <br />
 
-<details>
+<details style={{backgroundColor : 'transparent', border : 'none'}}>
   <summary>Show code</summary>
 <Tabs>
   <TabItem value="react" label="React">
@@ -242,7 +410,7 @@ export const ButtonSizeExample = ({ children, color }) => {
 <br />
 <br />
 
-<details>
+<details style={{backgroundColor : 'transparent', border : 'none'}}>
   <summary>Show code</summary>
 <Tabs>
   <TabItem value="react" label="React">
@@ -343,7 +511,7 @@ export const ButtonLoadingExample = ({ children, color }) => {
 <br />
 <br />
 
-<details>
+<details style={{backgroundColor : 'transparent', border : 'none'}}>
   <summary>Show code</summary>
 <Tabs>
   <TabItem value="react" label="React">
@@ -448,7 +616,7 @@ export const ButtonDisabledExample = ({ children, color }) => {
       <HyButton type="dashed" danger>
         <span>dashed</span>
       </HyButton>
-      <HyButton disabled type="dashed" danger>
+      <HyButton type="dashed" danger disabled>
         <span>dashed disabled</span>
       </HyButton>
       <br />
