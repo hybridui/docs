@@ -2,4 +2,40 @@
 sidebar_position: 3
 ---
 
+import "@hybridui/datepicker";
+import { HyDatepicker } from "@hybridui/datepicker/react";
+
 # Calendar
+
+<HyDatepicker
+  fieldFormat="DD/MM/YYYY"
+  dateValue="20/11/2024"
+  dateplaceholder="20.11.2024"
+></HyDatepicker>
+<br />
+<HyDatepicker
+  fieldFormat="DD.MM.YYYY"
+  dateValue="20.11.2024"
+  dateplaceholder="20.11.2024"
+></HyDatepicker>
+<br />
+
+# Locales
+
+### Arabe
+
+<HyDatepicker
+  locale="ar"
+  fieldFormat="DD/MM/YYYY"
+  dateValue="20/11/2024"
+  dateplaceholder="20.11.2024"
+></HyDatepicker>
+<br />
+### Chinese
+
+<HyDatepicker
+  locale="zh"
+  fieldFormat="DD/MM/YYYY"
+  dateValue="20/11/2024"
+  dateplaceholder="20.11.2024"
+></HyDatepicker>
