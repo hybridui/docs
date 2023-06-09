@@ -1,0 +1,72 @@
+---
+sidebar_position: 5
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import "@hybridui/icon";
+import "@hybridui/button";
+import "@hybridui/input";
+import "@hybridui/dropdown";
+import { useState } from "react";
+import { BlockPicker } from "react-color";
+import { HyInput } from "@hybridui/input/react";
+import { HyIcon } from "@hybridui/icon/react";
+import { HyButton } from "@hybridui/button/react";
+import { HyDropdown } from "@hybridui/dropdown/react";
+import { html } from "lit";
+
+# Dropdown
+
+## When To Use
+
+When faced with multiple choices, you have the option to enclose them within a Dropdown. By either hovering over or clicking on the trigger, a menu will appear, presenting a list of options for you to select from and carry out the corresponding action.
+
+### Basic
+
+export const BasicDropdow = ({ children, color }) => {
+  const mouseOverHandler = () => {
+    alert("ok");
+  };
+  const options = [
+    {
+      label: "Option 1",
+      children: [
+        { label: "Sub-option 1" },
+        {
+          label: "Sub-option 2",
+          children: [{ label: "Sub-sub-option 10" }],
+        },
+      ],
+      /*template: function (item) {
+        return html`<hy-input @mouseover=${mouseOverHandler}> </hy-input>Custom Template  for ${item.label}</span> </a>`;
+      },*/
+    },
+    { label: "Option 2" },
+    {
+      label: "Option 3",
+      children: [
+        {
+          label: "Sub-option 3",
+        },
+      ],
+    },
+  ];
+  return (
+    <>
+      <HyDropdown
+        placeholder="Select an option"
+        options={options}
+        trigger="hover"
+      >
+        <HyButton slot="label" type="link" icon="angle-down">
+          Hover me
+        </HyButton>
+      </HyDropdown>
+    </>
+  );
+};
+
+The simplest form of a dropdown menu.
+
+<BasicDropdow></BasicDropdow>
