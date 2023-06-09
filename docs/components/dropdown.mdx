@@ -18,15 +18,47 @@ import { html } from "lit";
 
 # Dropdown
 
-## When To Use
+### When To Use
 
 When faced with multiple choices, you have the option to enclose them within a Dropdown. By either hovering over or clicking on the trigger, a menu will appear, presenting a list of options for you to select from and carry out the corresponding action.
 
 ### Basic
 
-export const BasicDropdow = ({ children, color }) => {
-  const mouseOverHandler = () => {
-    alert("ok");
+export const BasicDropdowHover = ({ children, color }) => {
+  const mouseOverHandler = () => {};
+  const clickHandler = (e) => {
+    e.preventDefault();
+  };
+  const options = [
+    {
+      label: "Option 1",
+    },
+    {
+      label: "Option 2",
+    },
+    {
+      label: "Option 3",
+    },
+  ];
+  return (
+    <>
+      <HyDropdown
+        placeholder="Select an option"
+        options={options}
+        trigger="hover"
+      >
+        <HyButton slot="label" type="link" icon="angle-down">
+          Hover me
+        </HyButton>
+      </HyDropdown>
+    </>
+  );
+};
+
+export const BasicDropdowHoverCascading = ({ children, color }) => {
+  const mouseOverHandler = () => {};
+  const clickHandler = (e) => {
+    e.preventDefault();
   };
   const options = [
     {
@@ -38,9 +70,6 @@ export const BasicDropdow = ({ children, color }) => {
           children: [{ label: "Sub-sub-option 10" }],
         },
       ],
-      /*template: function (item) {
-        return html`<hy-input @mouseover=${mouseOverHandler}> </hy-input>Custom Template  for ${item.label}</span> </a>`;
-      },*/
     },
     { label: "Option 2" },
     {
@@ -67,6 +96,161 @@ export const BasicDropdow = ({ children, color }) => {
   );
 };
 
+export const BasicDropdowClick = ({ children, color }) => {
+  const mouseOverHandler = () => {};
+  const clickHandler = (e) => {
+    e.preventDefault();
+  };
+  const options = [
+    {
+      label: "Option 1",
+      children: [
+        { label: "Sub-option 1" },
+        {
+          label: "Sub-option 2",
+          children: [{ label: "Sub-sub-option 10" }],
+        },
+      ],
+    },
+    { label: "Option 2" },
+    {
+      label: "Option 3",
+      children: [
+        {
+          label: "Sub-option 3",
+        },
+      ],
+    },
+  ];
+  return (
+    <>
+      <HyDropdown placeholder="Select an option" options={options}>
+        <HyButton slot="label">Click me</HyButton>
+      </HyDropdown>
+    </>
+  );
+};
+
+export const SearchInDropdown = ({ children, color }) => {
+  const [search, setSearch] = useState();
+  const mouseOverHandler = () => {};
+  const clickHandler = (e) => {
+    e.preventDefault();
+  };
+  const options = [
+    {
+      label: "Option 1",
+      children: [
+        { label: "Sub-option 1" },
+        {
+          label: "Sub-option 2",
+          children: [{ label: "Sub-sub-option 10" }],
+        },
+      ],
+    },
+    { label: "Option 2" },
+    {
+      label: "Option 3",
+      children: [
+        {
+          label: "Sub-option 3",
+        },
+      ],
+    },
+  ];
+  return (
+    <>
+      <HyDropdown
+        search={search}
+        placeholder="Select an option"
+        options={options}
+      >
+        {search}
+        <HyInput
+          placeholder="Type to search"
+          slot="label"
+          icon="ellipsis-v"
+          valueChange={function (e) {
+            setSearch(e.detail.value);
+          }}
+        >
+          <span slot="suffix">
+            <hy-icon
+              name="times-circle"
+              click={function () {
+                setSearch("");
+              }}
+            ></hy-icon>{" "}
+          </span>
+        </HyInput>
+      </HyDropdown>
+    </>
+  );
+};
+
+export const ContextDropdown = ({ children, color }) => {
+  const mouseOverHandler = () => {};
+  const clickHandler = (e) => {
+    e.preventDefault();
+  };
+  const options = [
+    {
+      label: "Save",
+    },
+    {
+      label: "Print",
+    },
+    {
+      label: "Delete",
+    },
+  ];
+  return (
+    <>
+      <HyDropdown
+        placeholder="Select an option"
+        options={options}
+        trigger="context-menu"
+      >
+        <div
+          slot="label"
+          style={{
+            color: "white",
+            background: "gray",
+            height: "200px",
+            width: "400px",
+            textAlign: "center",
+            lineHeight: "200px",
+          }}
+        >
+          Right Click on here
+        </div>
+      </HyDropdown>
+    </>
+  );
+};
+
 The simplest form of a dropdown menu.
 
-<BasicDropdow></BasicDropdow>
+<BasicDropdowHover></BasicDropdowHover>
+
+### Multi-level
+
+Cascading dropdown menu.
+
+<BasicDropdowHoverCascading></BasicDropdowHoverCascading>
+
+### Triggers
+
+The default trigger mode is `hover`, it can be changed to `click`.
+
+<BasicDropdowClick> </BasicDropdowClick>
+
+### Search mode (MacOS like)
+
+This feature can be beneficial when utilizing a dropdown menu with an excessive number of options.
+
+<SearchInDropdown> </SearchInDropdown>
+
+### Context Menu
+
+<ContextDropdown></ContextDropdown>
