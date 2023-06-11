@@ -19,7 +19,7 @@
     "@docusaurus/preset-classic": "^2.4.1",
     "@hybridui/button": "^0.0.34",
     "@hybridui/datepicker": "^0.0.17",
-    "@hybridui/dropdown": "^0.0.12",
+    "@hybridui/dropdown": "^0.0.15",
     "@hybridui/icon": "^0.0.2",
     "@hybridui/input": "^0.0.21",
     "@lit-labs/react": "^1.1.1",
