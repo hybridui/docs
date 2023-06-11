@@ -9,9 +9,3 @@
  * Copyright 2018 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-
-/**
- * @license
- * Copyright 2023 Google Laabidi Aymen
- * SPDX-License-Identifier: MIT
- */
