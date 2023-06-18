@@ -22,7 +22,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Components',
-      items: ['components/buttons','components/inputs', 'components/calendar','components/dropdown','components/icons'],
+      items: ['components/buttons','components/inputs', 'components/calendar', 'components/tabs','components/dropdown','components/icons'],
     },
   ],
 };
